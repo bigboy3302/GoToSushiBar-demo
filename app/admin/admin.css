@@ -2,61 +2,143 @@
    own layout only. Always Latvian, no LangContext involved. */
 
 .admin-login {
+  position: relative;
   min-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--ink);
+  overflow: hidden;
+  background: radial-gradient(60% 90% at 82% 8%, rgba(199, 161, 92, 0.16), transparent 60%), var(--ink);
   padding: 24px;
 }
+.admin-login::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: repeating-radial-gradient(
+    circle at 0 100%,
+    transparent 0,
+    transparent 34px,
+    var(--line-soft) 35px,
+    var(--line-soft) 36px,
+    transparent 37px
+  );
+  background-size: 120px 120px;
+  -webkit-mask-image: radial-gradient(60% 60% at 50% 50%, black, transparent 75%);
+  mask-image: radial-gradient(60% 60% at 50% 50%, black, transparent 75%);
+}
+.admin-login-ring {
+  position: absolute;
+  right: clamp(-140px, -6vw, -40px);
+  bottom: clamp(-140px, -6vw, -40px);
+  width: clamp(280px, 34vw, 460px);
+  height: clamp(280px, 34vw, 460px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 .admin-login-card {
-  width: min(100%, 380px);
+  position: relative;
+  z-index: 1;
+  width: min(100%, 400px);
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: clamp(28px, 5vw, 40px);
+  border-radius: 6px;
+  padding: clamp(32px, 5vw, 44px);
+  box-shadow: 0 30px 70px -24px rgba(0, 0, 0, 0.55);
 }
-.admin-login-card h1 {
-  font-size: 1.5rem;
-  margin: 0;
+.admin-login-brand {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  text-decoration: none;
+  margin-bottom: 4px;
 }
-.admin-login-sub {
-  color: var(--stone);
-  margin: -8px 0 4px;
+.admin-login-brand span {
+  font-family: var(--font-fraunces), serif;
+  font-size: 1.3rem;
+  color: var(--paper);
+}
+.admin-login-brand small {
   font-family: var(--font-space-mono), monospace;
-  font-size: 0.8rem;
-  letter-spacing: 0.04em;
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  color: var(--gold-soft);
+}
+.admin-login-heading {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--line);
+}
+.admin-login-heading .eyebrow {
+  justify-content: center;
+}
+.admin-login-heading h1 {
+  font-size: 1.4rem;
+  margin: 0 0 16px;
 }
 .admin-login-card label {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  font-size: 0.85rem;
+  font-family: var(--font-space-mono), monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
   color: var(--stone);
 }
 .admin-login-card input {
   font: inherit;
-  padding: 12px 14px;
+  font-family: var(--font-work-sans), sans-serif;
+  font-size: 0.95rem;
+  padding: 13px 14px;
   background: var(--ink-2);
   border: 1px solid var(--line);
   border-radius: 4px;
   color: var(--paper);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.admin-login-card input::placeholder {
+  color: var(--stone-dim);
 }
 .admin-login-card input:focus-visible {
-  outline: 2px solid var(--gold-soft);
-  outline-offset: 1px;
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: var(--glow-gold);
 }
 .admin-login-error {
   color: #e8927c;
   font-size: 0.85rem;
   margin: 0;
+  padding: 10px 12px;
+  border: 1px solid rgba(232, 146, 124, 0.4);
+  border-radius: 4px;
+  background: rgba(232, 146, 124, 0.08);
 }
 .admin-login-card button {
-  margin-top: 8px;
+  margin-top: 4px;
   justify-content: center;
+}
+.admin-login-back {
+  align-self: center;
+  margin-top: 4px;
+  font-family: var(--font-space-mono), monospace;
+  font-size: 0.76rem;
+  color: var(--stone);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.admin-login-back:hover {
+  color: var(--gold-soft);
 }
 
 .admin-shell {

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import "../admin.css";
 import LogoutButton from "@/components/admin/LogoutButton";
 
 export default function AdminProtectedLayout({ children }: { children: React.ReactNode }) {
