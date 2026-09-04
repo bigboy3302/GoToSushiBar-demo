@@ -63,7 +63,7 @@ h2,
 h3 {
   font-family: var(--font-fraunces), ui-serif, Georgia, serif;
   font-weight: 600;
-  line-height: 1.05;
+  line-height: 1.2;
   text-wrap: balance;
   margin: 0;
   color: var(--paper);
@@ -100,21 +100,6 @@ a {
     opacity: 1;
     transform: none;
   }
-}
-
-/* ---------- Reveal-on-scroll (progressive enhancement, always resolves) ---------- */
-.reveal {
-  opacity: 1;
-  transform: none;
-}
-html.js .reveal {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-html.js .reveal.is-visible {
-  opacity: 1;
-  transform: none;
 }
 
 /* ---------- Header ---------- */
@@ -1001,22 +986,23 @@ footer {
   top: 52%;
   z-index: 0;
   transform: translate(-50%, -50%);
-  width: max-content;
-  max-width: none;
-  font-family: var(--font-fraunces), serif;
-  font-weight: 900;
-  font-size: clamp(4.5rem, 15vw, 13rem);
-  letter-spacing: 0.01em;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(244, 239, 226, 0.07);
-  white-space: nowrap;
+  width: min(92%, 1400px);
+  height: auto;
   pointer-events: none;
   user-select: none;
+  overflow: visible;
+}
+.hero-ghost text {
+  font-family: var(--font-fraunces), serif;
+  font-weight: 900;
+  fill: none;
+  stroke: rgba(244, 239, 226, 0.07);
+  stroke-width: 1px;
+  vector-effect: non-scaling-stroke;
 }
 @media (max-width: 600px) {
   .hero-ghost {
     top: 22%;
-    font-size: 3.4rem;
   }
 }
 

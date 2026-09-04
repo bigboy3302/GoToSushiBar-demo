@@ -78,7 +78,7 @@ export default function Experience() {
   return (
     <section className="exp" id="experience">
       <div className="wrap">
-        <div className="section-head reveal">
+        <div className="section-head">
           <div>
             <span className="eyebrow">{t("Pieredze", "Experience")}</span>
             <h2>
@@ -104,7 +104,7 @@ export default function Experience() {
           <hr className="rule" />
         </div>
 
-        <div className="exp-grid reveal">
+        <div className="exp-grid">
           {ITEMS.map((item, i) => (
             <div className="exp-item" key={i}>
               {item.icon}

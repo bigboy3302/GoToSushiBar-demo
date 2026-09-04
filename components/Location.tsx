@@ -12,7 +12,7 @@ export default function Location() {
   return (
     <section className="location" id="location">
       <div className="wrap">
-        <div className="section-head reveal">
+        <div className="section-head">
           <div>
             <span className="eyebrow">{t("Atrašanās vieta", "Location")}</span>
             <h2>Rīgas iela 9</h2>
@@ -26,7 +26,7 @@ export default function Location() {
           <hr className="rule" />
         </div>
 
-        <div className="loc-grid reveal">
+        <div className="loc-grid">
           <div className="loc-details">
             <dl>
               <div className="row">
@@ -73,7 +73,7 @@ export default function Location() {
           </div>
         </div>
 
-        <div className="map-frame reveal">
+        <div className="map-frame">
           <iframe
             src={MAPS_EMBED}
             title={t("Karte — Go To Sushi Bar, Rīgas iela 9, Cēsis", "Map — Go To Sushi Bar, Rīgas iela 9, Cēsis") as string}

@@ -9,13 +9,13 @@ export default function About({ photoUrl }: { photoUrl?: string | null }) {
     <section className="about" id="about">
       {photoUrl ? (
         <div className="wrap">
-          <div className="about-photo reveal">
+          <div className="about-photo">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={photoUrl} alt="" />
           </div>
         </div>
       ) : null}
-      <div className="wrap about-grid reveal">
+      <div className="wrap about-grid">
         <div>
           <span className="eyebrow">{t("Par mums", "About")}</span>
           <h2 style={{ fontSize: "1.9rem" }}>

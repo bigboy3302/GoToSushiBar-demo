@@ -14,9 +14,17 @@ export default function Hero({ heroImageUrl }: { heroImageUrl?: string | null })
       ) : (
         <HeroCanvas />
       )}
-      <div className="hero-ghost" aria-hidden="true">
-        GO TO SUSHI BAR
-      </div>
+      <svg className="hero-ghost" viewBox="0 0 1000 140" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <text
+          x="500"
+          y="105"
+          textAnchor="middle"
+          lengthAdjust="spacingAndGlyphs"
+          textLength="960"
+        >
+          GO TO SUSHI BAR
+        </text>
+      </svg>
       <div className="wrap hero-grid">
         <div>
           <span className="eyebrow hero-line-1">

@@ -43,7 +43,7 @@ export default function MenuContent({ menu }: { menu: GroupedMenu }) {
   return (
     <section className="menu" id="menu">
       <div className="wrap">
-        <div className="section-head reveal">
+        <div className="section-head">
           <div>
             <span className="eyebrow">{t("Ēdienkarte", "Menu")}</span>
             <h2>{t("Ēdienkarte", "Menu")}</h2>
@@ -58,7 +58,7 @@ export default function MenuContent({ menu }: { menu: GroupedMenu }) {
         </div>
 
         {hasAnyItems ? (
-          <div className="menu-tabs reveal">
+          <div className="menu-tabs">
             <input type="radio" name="menu-tab" id="tab-sushi" className="menu-tab-input" defaultChecked />
             <input type="radio" name="menu-tab" id="tab-food" className="menu-tab-input" />
             <input type="radio" name="menu-tab" id="tab-drinks" className="menu-tab-input" />

@@ -12,7 +12,7 @@ export default function Gallery({ images }: { images: GalleryImage[] }) {
   return (
     <section className="gallery">
       <div className="wrap">
-        <div className="gallery-grid reveal">
+        <div className="gallery-grid">
           {images.map((image, i) => (
             // eslint-disable-next-line @next/next/no-img-element
             <img key={image.url} src={image.url} alt={(t(image.altLv, image.altEn) as string) || `Foto ${i + 1}`} />

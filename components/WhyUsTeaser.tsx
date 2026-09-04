@@ -24,7 +24,7 @@ export default function WhyUsTeaser() {
   return (
     <section className="about">
       <div className="wrap">
-        <div className="section-head reveal">
+        <div className="section-head">
           <div>
             <span className="eyebrow">{t("Kāpēc mēs", "Why us")}</span>
             <h2>
@@ -44,7 +44,7 @@ export default function WhyUsTeaser() {
           </div>
         </div>
 
-        <div className="exp-grid reveal">
+        <div className="exp-grid">
           {POINTS.map((point, i) => (
             <div className="exp-item" key={i}>
               <p>{t(point.lv, point.en)}</p>

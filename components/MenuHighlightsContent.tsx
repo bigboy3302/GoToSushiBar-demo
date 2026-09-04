@@ -10,7 +10,7 @@ export default function MenuHighlightsContent({ items }: { items: MenuItemRow[] 
   return (
     <section className="menu">
       <div className="wrap">
-        <div className="section-head reveal">
+        <div className="section-head">
           <div>
             <span className="eyebrow">{t("Ēdienkarte", "Menu")}</span>
             <h2>{t("Daži iecienītāki", "A few favourites")}</h2>
@@ -24,7 +24,7 @@ export default function MenuHighlightsContent({ items }: { items: MenuItemRow[] 
           <hr className="rule" />
         </div>
 
-        <ul className="menu-list reveal">
+        <ul className="menu-list">
           {items.map((item) => (
             <li className="menu-item" key={item.id}>
               <span className="name">{t(item.name_lv, item.name_en)}</span>
