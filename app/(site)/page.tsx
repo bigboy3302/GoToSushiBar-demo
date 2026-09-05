@@ -1,5 +1,5 @@
 import Hero from "@/components/Hero";
-import Ticker from "@/components/Ticker";
+import FeatureRow from "@/components/FeatureRow";
 import WhyUsTeaser from "@/components/WhyUsTeaser";
 import MenuHighlights from "@/components/MenuHighlights";
 import CTABand from "@/components/CTABand";
@@ -13,7 +13,7 @@ export default async function Home({ searchParams }: { searchParams: { preview?:
   return (
     <>
       <Hero heroImageUrl={media.hero_bg?.image_url ?? null} />
-      <Ticker />
+      <FeatureRow />
       <WhyUsTeaser />
       <MenuHighlights mode={mode} />
       <CTABand />

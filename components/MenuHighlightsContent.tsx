@@ -48,7 +48,7 @@ export default function MenuHighlightsContent({ groups }: { groups: MenuHighligh
         </div>
 
         <p style={{ marginTop: "clamp(28px, 4vw, 40px)" }}>
-          <Link className="btn btn-gold" href="/menu">
+          <Link className="btn btn-dark" href="/menu">
             {t("Skatīt visu ēdienkarti", "See the full menu")}
           </Link>
         </p>

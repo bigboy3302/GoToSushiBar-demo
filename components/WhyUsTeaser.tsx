@@ -33,7 +33,7 @@ export default function WhyUsTeaser() {
               "In the heart of Old Town at Rīgas iela 9 — an easy walk from anywhere downtown, with seating indoors and on a seasonal terrace."
             )}
           </p>
-          <Link className="btn btn-ghost" href="/about" style={{ marginTop: 8 }}>
+          <Link className="btn btn-outline" href="/about" style={{ marginTop: 8 }}>
             {t("Uzzināt vairāk", "Learn more")}
           </Link>
         </div>

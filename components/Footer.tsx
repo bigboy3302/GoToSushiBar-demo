@@ -2,20 +2,18 @@
 
 import Link from "next/link";
 import { useLang } from "@/lib/i18n/LangContext";
+import BrandMark from "./BrandMark";
 
 export default function Footer() {
   const { t } = useLang();
   const year = new Date().getFullYear();
 
   return (
-    <footer>
+    <footer className="pub-dark">
       <div className="wrap">
         <div className="foot-grid">
           <div className="foot-brand">
-            <Link className="brand" href="/">
-              <span>Go To Sushi Bar</span>
-              <small>CĒSU VECPILSĒTA</small>
-            </Link>
+            <BrandMark />
             <p>
               {t(
                 "Suši bārs Cēsu vecpilsētā — ēdiens uz vietas, aizvešanai un piegādei.",

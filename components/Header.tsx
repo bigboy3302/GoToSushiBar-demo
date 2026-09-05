@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLang } from "@/lib/i18n/LangContext";
+import BrandMark from "./BrandMark";
 
 const NAV_LINKS = [
   { href: "/about", lv: "Par mums", en: "About" },
@@ -31,12 +32,9 @@ export default function Header() {
   }
 
   return (
-    <header id="siteHeader">
+    <header id="siteHeader" className="pub-dark">
       <div className="nav-row">
-        <Link className="brand" href="/">
-          <span>Go To Sushi Bar</span>
-          <small>CĒSU VECPILSĒTA</small>
-        </Link>
+        <BrandMark />
         <nav className="primary">
           <div className="navlinks">
             {NAV_LINKS.map((link) => (
@@ -102,7 +100,7 @@ export default function Header() {
               </Link>
             ))}
           </nav>
-          <a className="btn btn-gold drawer-tel" href="tel:+37124204050" onClick={closeDrawer}>
+          <a className="btn btn-red drawer-tel" href="tel:+37124204050" onClick={closeDrawer}>
             +371 24 204 050
           </a>
           <div className="lang-toggle drawer-lang" role="group" aria-label="Language / Valoda">
