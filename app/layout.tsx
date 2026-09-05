@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { cookies } from "next/headers";
 import { Work_Sans, Archivo } from "next/font/google";
 import "./globals.css";
+import "./admin/admin.css";
 
 const workSans = Work_Sans({
   subsets: ["latin", "latin-ext"],
