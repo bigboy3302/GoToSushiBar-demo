@@ -1,6 +1,7 @@
 "use client";
 
 import { useLang } from "@/lib/i18n/LangContext";
+import HighlightPoints from "./HighlightPoints";
 
 export default function About({ photoUrl }: { photoUrl?: string | null }) {
   const { t } = useLang();
@@ -18,7 +19,7 @@ export default function About({ photoUrl }: { photoUrl?: string | null }) {
       <div className="wrap about-grid">
         <div>
           <span className="eyebrow">{t("Par mums", "About")}</span>
-          <h2 style={{ fontSize: "1.9rem" }}>
+          <h2>
             {t(
               <>
                 Vecpilsēta.
@@ -59,6 +60,11 @@ export default function About({ photoUrl }: { photoUrl?: string | null }) {
             )}
           </p>
         </div>
+      </div>
+
+      <div className="wrap">
+        <hr className="rule about-rule" />
+        <HighlightPoints />
       </div>
     </section>
   );

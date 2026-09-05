@@ -84,7 +84,7 @@ export default function Experience() {
             <h2>
               {t(
                 <>
-                  Vairāk nekā
+                  {"Vairāk nekā"}
                   <br />
                   galds
                 </>,
