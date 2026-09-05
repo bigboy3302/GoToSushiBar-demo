@@ -26,7 +26,7 @@ export default function PublishBar() {
       </p>
       <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
         {message ? <span className={`admin-toast is-${message.kind}`}>{message.text}</span> : null}
-        <button type="button" className="btn btn-gold" onClick={handlePublish} disabled={pending}>
+        <button type="button" className="btn btn-red" onClick={handlePublish} disabled={pending}>
           {pending ? "Publicē…" : "Publicēt izmaiņas"}
         </button>
       </div>

@@ -97,10 +97,10 @@ export default function ImageDropzone({
 
       {imageUrl ? (
         <div className="admin-dropzone-row">
-          <button type="button" className="btn btn-ghost" onClick={() => inputRef.current?.click()} disabled={busy}>
+          <button type="button" className="btn btn-outline" onClick={() => inputRef.current?.click()} disabled={busy}>
             Aizstāt
           </button>
-          <button type="button" className="btn btn-ghost" onClick={handleRemove} disabled={busy}>
+          <button type="button" className="btn btn-outline" onClick={handleRemove} disabled={busy}>
             Noņemt
           </button>
         </div>

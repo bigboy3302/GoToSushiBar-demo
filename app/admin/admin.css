@@ -1,5 +1,6 @@
-/* Admin panel — reuses the public site's design tokens (globals.css :root),
-   own layout only. Always Latvian, no LangContext involved. */
+/* Admin panel — reskinned onto the same black/white/red tokens and
+   Archivo/Work Sans fonts as the public site (see globals.css :root's
+   --pub-* block). Always Latvian, no LangContext involved. */
 
 .admin-login {
   position: relative;
@@ -8,7 +9,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: radial-gradient(60% 90% at 82% 8%, rgba(199, 161, 92, 0.16), transparent 60%), var(--ink);
+  background: var(--pub-ink);
   padding: 24px;
 }
 .admin-login::before {
@@ -21,22 +22,13 @@
     circle at 0 100%,
     transparent 0,
     transparent 34px,
-    var(--line-soft) 35px,
-    var(--line-soft) 36px,
+    var(--pub-line-invert-soft) 35px,
+    var(--pub-line-invert-soft) 36px,
     transparent 37px
   );
   background-size: 120px 120px;
   -webkit-mask-image: radial-gradient(60% 60% at 50% 50%, black, transparent 75%);
   mask-image: radial-gradient(60% 60% at 50% 50%, black, transparent 75%);
-}
-.admin-login-ring {
-  position: absolute;
-  right: clamp(-140px, -6vw, -40px);
-  bottom: clamp(-140px, -6vw, -40px);
-  width: clamp(280px, 34vw, 460px);
-  height: clamp(280px, 34vw, 460px);
-  opacity: 0.5;
-  pointer-events: none;
 }
 
 .admin-login-card {
@@ -46,31 +38,19 @@
   display: flex;
   flex-direction: column;
   gap: 18px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 6px;
+  background: var(--pub-card-dark);
+  border: 1px solid var(--pub-line-invert);
+  border-radius: 12px;
   padding: clamp(32px, 5vw, 44px);
-  box-shadow: 0 30px 70px -24px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 30px 70px -24px rgba(0, 0, 0, 0.6);
 }
 .admin-login-brand {
   align-self: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  text-decoration: none;
   margin-bottom: 4px;
+  color: var(--pub-text-invert);
 }
-.admin-login-brand span {
-  font-family: var(--font-fraunces), serif;
-  font-size: 1.3rem;
-  color: var(--paper);
-}
-.admin-login-brand small {
-  font-family: var(--font-space-mono), monospace;
-  font-size: 0.6rem;
-  letter-spacing: 0.22em;
-  color: var(--gold-soft);
+.admin-login-brand .brand-name {
+  color: var(--pub-text-invert);
 }
 .admin-login-heading {
   text-align: center;
@@ -78,51 +58,60 @@
   flex-direction: column;
   gap: 6px;
   padding-bottom: 4px;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--pub-line-invert);
 }
 .admin-login-heading .eyebrow {
   justify-content: center;
+  font-family: var(--font-work-sans), sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--pub-red);
 }
 .admin-login-heading h1 {
+  font-family: var(--font-archivo), sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.01em;
   font-size: 1.4rem;
   margin: 0 0 16px;
+  color: var(--pub-text-invert);
 }
 .admin-login-card label {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  font-family: var(--font-space-mono), monospace;
+  font-family: var(--font-work-sans), sans-serif;
+  font-weight: 600;
   font-size: 0.76rem;
   letter-spacing: 0.04em;
-  color: var(--stone);
+  color: var(--pub-muted-invert);
 }
 .admin-login-card input {
   font: inherit;
   font-family: var(--font-work-sans), sans-serif;
   font-size: 0.95rem;
   padding: 13px 14px;
-  background: var(--ink-2);
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  color: var(--paper);
+  background: var(--pub-ink-2);
+  border: 1px solid var(--pub-line-invert);
+  border-radius: 8px;
+  color: var(--pub-text-invert);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .admin-login-card input::placeholder {
-  color: var(--stone-dim);
+  color: var(--pub-muted-invert-2);
 }
 .admin-login-card input:focus-visible {
   outline: none;
-  border-color: var(--gold);
-  box-shadow: var(--glow-gold);
+  border-color: var(--pub-red);
+  box-shadow: var(--pub-glow-red);
 }
 .admin-login-error {
-  color: #e8927c;
+  color: #ff8a7a;
   font-size: 0.85rem;
   margin: 0;
   padding: 10px 12px;
-  border: 1px solid rgba(232, 146, 124, 0.4);
-  border-radius: 4px;
-  background: rgba(232, 146, 124, 0.08);
+  border: 1px solid rgba(255, 138, 122, 0.4);
+  border-radius: 8px;
+  background: rgba(255, 138, 122, 0.08);
 }
 .admin-login-card button {
   margin-top: 4px;
@@ -131,20 +120,21 @@
 .admin-login-back {
   align-self: center;
   margin-top: 4px;
-  font-family: var(--font-space-mono), monospace;
+  font-family: var(--font-work-sans), sans-serif;
+  font-weight: 600;
   font-size: 0.76rem;
-  color: var(--stone);
+  color: var(--pub-muted-invert);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 .admin-login-back:hover {
-  color: var(--gold-soft);
+  color: var(--pub-red);
 }
 
 .admin-shell {
   min-height: 100dvh;
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--pub-ink);
+  color: var(--pub-text-invert);
 }
 .admin-topbar {
   display: flex;
@@ -153,26 +143,34 @@
   gap: 20px;
   flex-wrap: wrap;
   padding: 18px clamp(20px, 4vw, 40px);
-  border-bottom: 1px solid var(--line);
-  background: var(--ink-2);
+  border-bottom: 1px solid var(--pub-line-invert);
+  background: var(--pub-ink-2);
 }
 .admin-topbar-brand {
-  font-family: var(--font-fraunces), serif;
-  font-size: 1.1rem;
+  color: var(--pub-text-invert);
+}
+.admin-topbar-brand .brand-icon {
+  width: 26px;
+  height: 26px;
+}
+.admin-topbar-brand .brand-tagline {
+  display: none;
 }
 .admin-topbar-nav {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
+  font-family: var(--font-work-sans), sans-serif;
+  font-weight: 500;
   font-size: 0.9rem;
 }
 .admin-topbar-nav a {
-  color: var(--stone);
+  color: var(--pub-muted-invert);
   text-decoration: none;
 }
 .admin-topbar-nav a:hover,
 .admin-topbar-nav a.is-active {
-  color: var(--gold-soft);
+  color: var(--pub-red);
 }
 .admin-topbar-actions {
   display: flex;
@@ -189,11 +187,16 @@
   gap: clamp(32px, 4vw, 48px);
 }
 .admin-section h2 {
+  font-family: var(--font-archivo), sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.01em;
   font-size: 1.3rem;
   margin: 0 0 4px;
+  color: var(--pub-text-invert);
 }
 .admin-section-sub {
-  color: var(--stone);
+  font-family: var(--font-work-sans), sans-serif;
+  color: var(--pub-muted-invert);
   font-size: 0.9rem;
   margin: 0 0 20px;
 }
@@ -205,9 +208,9 @@
 }
 
 .admin-dropzone {
-  border: 1px dashed var(--line);
-  border-radius: 6px;
-  background: var(--surface);
+  border: 1px dashed var(--pub-line-invert);
+  border-radius: 10px;
+  background: var(--pub-card-dark);
   padding: 16px;
   display: flex;
   flex-direction: column;
@@ -215,19 +218,20 @@
   transition: border-color 0.2s ease, background 0.2s ease;
 }
 .admin-dropzone.is-dragover {
-  border-color: var(--gold);
-  background: var(--surface-2);
+  border-color: var(--pub-red);
+  background: var(--pub-ink-2);
 }
 .admin-dropzone-label {
+  font-family: var(--font-work-sans), sans-serif;
   font-size: 0.82rem;
-  color: var(--stone);
+  color: var(--pub-muted-invert);
 }
 .admin-dropzone-preview {
   position: relative;
   aspect-ratio: 4 / 3;
-  border-radius: 4px;
+  border-radius: 8px;
   overflow: hidden;
-  background: var(--ink-2);
+  background: var(--pub-ink-2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -238,7 +242,8 @@
   object-fit: cover;
 }
 .admin-dropzone-empty {
-  color: var(--stone-dim);
+  font-family: var(--font-work-sans), sans-serif;
+  color: var(--pub-muted-invert-2);
   font-size: 0.78rem;
   text-align: center;
   padding: 0 12px;
@@ -265,12 +270,13 @@
   gap: 16px;
   flex-wrap: wrap;
   padding: 16px 20px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 6px;
+  background: var(--pub-card-dark);
+  border: 1px solid var(--pub-line-invert);
+  border-radius: 10px;
 }
 .admin-publish-note {
-  color: var(--stone);
+  font-family: var(--font-work-sans), sans-serif;
+  color: var(--pub-muted-invert);
   font-size: 0.85rem;
   margin: 0;
 }
@@ -278,20 +284,21 @@
 .admin-table {
   width: 100%;
   border-collapse: collapse;
+  font-family: var(--font-work-sans), sans-serif;
   font-size: 0.9rem;
 }
 .admin-table th {
   text-align: left;
-  color: var(--stone);
-  font-weight: 400;
+  color: var(--pub-muted-invert);
+  font-weight: 600;
   font-size: 0.78rem;
   letter-spacing: 0.04em;
   padding: 8px 10px;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--pub-line-invert);
 }
 .admin-table td {
   padding: 10px;
-  border-bottom: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--pub-line-invert-soft);
   vertical-align: top;
 }
 .admin-table input,
@@ -300,10 +307,10 @@
   width: 100%;
   font: inherit;
   padding: 8px 10px;
-  background: var(--ink-2);
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  color: var(--paper);
+  background: var(--pub-ink-2);
+  border: 1px solid var(--pub-line-invert);
+  border-radius: 6px;
+  color: var(--pub-text-invert);
 }
 .admin-table textarea {
   resize: vertical;
@@ -321,15 +328,20 @@
 .admin-new-item {
   margin-top: 16px;
   padding: 16px;
-  border: 1px dashed var(--line);
-  border-radius: 6px;
+  border: 1px dashed var(--pub-line-invert);
+  border-radius: 10px;
+}
+.admin-new-item h3 {
+  font-family: var(--font-archivo), sans-serif;
+  font-weight: 800;
+  color: var(--pub-text-invert);
 }
 
 .admin-preview-frame {
-  border: 1px solid var(--line);
-  border-radius: 6px;
+  border: 1px solid var(--pub-line-invert);
+  border-radius: 10px;
   overflow: hidden;
-  background: var(--ink-2);
+  background: var(--pub-ink-2);
 }
 .admin-preview-frame iframe {
   width: 100%;
@@ -344,31 +356,33 @@
   margin-bottom: 14px;
 }
 .admin-preview-tabs a {
-  font-family: var(--font-space-mono), monospace;
+  font-family: var(--font-work-sans), sans-serif;
+  font-weight: 600;
   font-size: 0.78rem;
-  color: var(--stone);
-  border: 1px solid var(--line);
+  color: var(--pub-muted-invert);
+  border: 1px solid var(--pub-line-invert);
   border-radius: 999px;
   padding: 8px 16px;
   text-decoration: none;
 }
 .admin-preview-tabs a.is-active {
-  background: var(--gold);
-  border-color: var(--gold);
-  color: var(--ink-2);
+  background: var(--pub-red);
+  border-color: var(--pub-red);
+  color: #fff;
 }
 
 .admin-toast {
+  font-family: var(--font-work-sans), sans-serif;
   font-size: 0.85rem;
   padding: 10px 14px;
-  border-radius: 4px;
-  border: 1px solid var(--line);
+  border-radius: 8px;
+  border: 1px solid var(--pub-line-invert);
 }
 .admin-toast.is-success {
-  color: var(--gold-soft);
-  border-color: var(--gold);
+  color: var(--pub-red);
+  border-color: var(--pub-red);
 }
 .admin-toast.is-error {
-  color: #e8927c;
-  border-color: #e8927c;
+  color: #ff8a7a;
+  border-color: #ff8a7a;
 }

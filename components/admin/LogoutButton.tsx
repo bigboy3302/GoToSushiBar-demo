@@ -12,7 +12,7 @@ export default function LogoutButton() {
   }
 
   return (
-    <button type="button" className="btn btn-ghost" onClick={handleLogout}>
+    <button type="button" className="btn btn-outline" onClick={handleLogout}>
       Iziet
     </button>
   );

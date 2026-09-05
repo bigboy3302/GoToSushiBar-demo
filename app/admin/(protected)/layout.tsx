@@ -1,11 +1,12 @@
 import Link from "next/link";
+import BrandMark from "@/components/BrandMark";
 import LogoutButton from "@/components/admin/LogoutButton";
 
 export default function AdminProtectedLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="admin-shell">
+    <div className="admin-shell pub-dark">
       <div className="admin-topbar">
-        <span className="admin-topbar-brand">Go To Sushi Bar · Administrēšana</span>
+        <BrandMark className="admin-topbar-brand" href="/admin" />
         <nav className="admin-topbar-nav">
           <Link href="/admin">Sākums</Link>
           <Link href="/admin/menu">Ēdienkarte</Link>

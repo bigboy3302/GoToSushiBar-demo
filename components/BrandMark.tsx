@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-export default function BrandMark({ className }: { className?: string }) {
+export default function BrandMark({ className, href = "/" }: { className?: string; href?: string }) {
   return (
-    <Link className={`brand${className ? ` ${className}` : ""}`} href="/">
+    <Link className={`brand${className ? ` ${className}` : ""}`} href={href}>
       <svg className="brand-icon" viewBox="0 0 32 32" aria-hidden="true">
         <circle cx="16" cy="16" r="15" fill="var(--pub-red)" />
         <circle cx="16" cy="16" r="10.5" fill="none" stroke="#fff" strokeWidth="2" />

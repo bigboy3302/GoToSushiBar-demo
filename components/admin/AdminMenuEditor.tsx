@@ -166,10 +166,10 @@ function MenuItemRowEditor({ item }: { item: MenuItemRow }) {
       </td>
       <td>
         <div className="admin-row-actions">
-          <button type="button" className="btn btn-gold" onClick={handleSave} disabled={pending}>
+          <button type="button" className="btn btn-red" onClick={handleSave} disabled={pending}>
             Saglabāt
           </button>
-          <button type="button" className="btn btn-ghost" onClick={handleDelete} disabled={pending}>
+          <button type="button" className="btn btn-outline" onClick={handleDelete} disabled={pending}>
             Dzēst
           </button>
         </div>
@@ -242,7 +242,7 @@ function NewMenuItemForm({ category }: { category: MenuCategory }) {
               />
             </td>
             <td>
-              <button type="button" className="btn btn-gold" onClick={handleCreate} disabled={pending}>
+              <button type="button" className="btn btn-red" onClick={handleCreate} disabled={pending}>
                 Pievienot
               </button>
             </td>

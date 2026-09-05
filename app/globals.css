@@ -3,27 +3,11 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
-  --ink: #0e1b15;
-  --ink-2: #0a140f;
-  --surface: #16281f;
-  --surface-2: #1c3226;
-  --gold: #d6ad66;
-  --gold-soft: #f1c878;
-  --jade: #1f4d34;
-  --jade-soft: #4b8760;
-  --paper: #f4efe2;
-  --stone: #9db2a1;
-  --stone-dim: #5f7568;
-  --line: rgba(244, 239, 226, 0.14);
-  --line-soft: rgba(244, 239, 226, 0.08);
-  --glow-gold: 0 0 0 1px rgba(214, 173, 102, 0.4), 0 10px 34px -6px rgba(214, 173, 102, 0.45);
+  color-scheme: light;
   --maxw: 1180px;
 
-  /* ---- Public site v2: black / white / red redesign tokens ----
-     Kept separate from the tokens above, which the admin panel still
-     depends on unchanged. See CLAUDE.md-adjacent note: do not repaint
-     the tokens above without also checking app/admin/admin.css. */
+  /* ---- Site-wide black / white / red design tokens ----
+     Shared by the public site and the admin panel alike. */
   --pub-red: #e2202b;
   --pub-red-dark: #b5121b;
   --pub-red-soft: #ff4d57;
@@ -48,8 +32,8 @@
   --pub-line-invert-soft: rgba(255, 255, 255, 0.08);
 }
 
-/* Dark band scope for the v2 redesign: header, hero, CTA band, footer.
-   Redefines the semantic pub-* tokens locally so every rule below that
+/* Dark band scope: header, hero, CTA band, footer, and the whole admin
+   panel. Redefines the semantic pub-* tokens locally so every rule that
    reads var(--pub-text)/var(--pub-line)/etc keeps working unmodified
    whether it renders on a light section or inside one of these bands. */
 .pub-dark {
@@ -90,8 +74,8 @@ html {
 
 body {
   margin: 0;
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--pub-bg);
+  color: var(--pub-text);
   font-family: var(--font-work-sans), ui-sans-serif, system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.6;
@@ -105,12 +89,13 @@ img {
 h1,
 h2,
 h3 {
-  font-family: var(--font-fraunces), ui-serif, Georgia, serif;
-  font-weight: 600;
+  font-family: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
   line-height: 1.2;
   text-wrap: balance;
   margin: 0;
-  color: var(--paper);
+  color: var(--pub-text);
 }
 
 a {
@@ -118,51 +103,18 @@ a {
 }
 
 .eyebrow {
-  font-family: var(--font-space-mono), ui-monospace, monospace;
+  font-family: var(--font-work-sans), ui-sans-serif, sans-serif;
+  font-weight: 700;
   font-size: 0.72rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--gold-soft);
+  color: var(--pub-red);
 }
 
 .wrap {
   max-width: var(--maxw);
   margin: 0 auto;
   padding: 0 clamp(20px, 5vw, 56px);
-}
-
-/* ---------- Public site v2: scoped overrides ----------
-   #top is the <main> wrapper for every public (site) page — see
-   app/(site)/layout.tsx. The admin panel lives outside it, so these
-   higher-specificity rules reskin the public pages without touching
-   the shared h1-h3 / .eyebrow / .btn rules the admin panel relies on. */
-#top {
-  background: var(--pub-bg);
-  color: var(--pub-text);
-}
-#top h1,
-#top h2,
-#top h3 {
-  font-family: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: var(--pub-text);
-}
-#top .eyebrow {
-  font-family: var(--font-work-sans), ui-sans-serif, sans-serif;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  color: var(--pub-red);
-}
-#top .btn {
-  font-family: var(--font-work-sans), sans-serif;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  padding: 15px 28px;
-  border-radius: 999px;
-}
-#top :focus-visible {
-  outline-color: var(--pub-red);
 }
 
 /* ---------- Page transition ---------- */
@@ -185,16 +137,21 @@ header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(10, 10, 10, 0.7);
+  /* Solid by default: at scroll 0 the sticky header sits directly
+     above the hero in normal flow (nothing is layered behind it yet),
+     so a translucent backdrop-filter here would blur the browser's
+     blank canvas instead of real content. Blur only kicks in once
+     .scrolled is set, when there's actually page content underneath. */
+  background: var(--pub-ink);
   color: var(--pub-text);
-  backdrop-filter: blur(10px) saturate(1.1);
-  -webkit-backdrop-filter: blur(10px) saturate(1.1);
   border-bottom: 1px solid transparent;
   transition: border-color 0.4s ease, background 0.4s ease;
 }
 header.scrolled {
   border-bottom-color: var(--pub-line);
   background: rgba(5, 5, 5, 0.94);
+  backdrop-filter: blur(10px) saturate(1.1);
+  -webkit-backdrop-filter: blur(10px) saturate(1.1);
 }
 .nav-row {
   display: flex;
@@ -438,12 +395,13 @@ dialog#mobile-drawer::backdrop {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-family: var(--font-space-mono), monospace;
+  font-family: var(--font-work-sans), sans-serif;
+  font-weight: 600;
   font-size: 0.82rem;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.01em;
   text-decoration: none;
-  padding: 14px 26px;
-  border-radius: 2px;
+  padding: 15px 28px;
+  border-radius: 999px;
   border: 1px solid transparent;
   transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
@@ -451,25 +409,6 @@ dialog#mobile-drawer::backdrop {
 .btn:hover {
   transform: translateY(-2px);
 }
-.btn-gold {
-  background: var(--gold);
-  color: var(--ink-2);
-}
-.btn-gold:hover {
-  background: var(--gold-soft);
-  box-shadow: var(--glow-gold);
-}
-.btn-ghost {
-  border-color: var(--line);
-  color: var(--paper);
-}
-.btn-ghost:hover {
-  border-color: var(--gold);
-  color: var(--gold-soft);
-  box-shadow: 0 10px 30px -12px rgba(31, 77, 52, 0.55);
-}
-
-/* v2 redesign button variants (public site only) */
 .btn-red {
   background: var(--pub-red);
   border-color: var(--pub-red);
@@ -1385,6 +1324,6 @@ footer {
 /* focus visibility across the site */
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--gold-soft);
+  outline: 2px solid var(--pub-red);
   outline-offset: 2px;
 }

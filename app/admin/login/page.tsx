@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import BrandMark from "@/components/BrandMark";
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -35,44 +36,11 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <div className="admin-login">
+    <div className="admin-login pub-dark">
       <div className="grain" aria-hidden="true" />
 
-      <svg className="admin-login-ring" viewBox="0 0 300 300" aria-hidden="true">
-        <circle cx="150" cy="150" r="118" fill="none" stroke="var(--line)" strokeWidth="1" />
-        <circle cx="150" cy="150" r="96" fill="none" stroke="var(--line)" strokeWidth="1" strokeDasharray="2 8" />
-        <circle cx="150" cy="150" r="70" fill="var(--gold)" opacity="0.1" />
-        <circle cx="150" cy="150" r="70" fill="none" stroke="var(--gold)" strokeWidth="1.5" />
-        <path
-          d="M96 172c18 14 38 14 54 4s34-10 54 4"
-          fill="none"
-          stroke="var(--gold-soft)"
-          strokeWidth="2"
-          strokeLinecap="round"
-        />
-        <path
-          d="M90 150c18 14 38 14 54 4s34-10 56 4"
-          fill="none"
-          stroke="var(--jade-soft)"
-          strokeWidth="2"
-          strokeLinecap="round"
-          opacity="0.8"
-        />
-        <path
-          d="M96 128c18 14 38 14 54 4s34-10 54 4"
-          fill="none"
-          stroke="var(--gold-soft)"
-          strokeWidth="2"
-          strokeLinecap="round"
-          opacity="0.6"
-        />
-      </svg>
-
       <form className="admin-login-card" onSubmit={handleSubmit}>
-        <a className="admin-login-brand" href="/">
-          <span>Go To Sushi Bar</span>
-          <small>CĒSU VECPILSĒTA</small>
-        </a>
+        <BrandMark className="admin-login-brand" />
 
         <div className="admin-login-heading">
           <span className="eyebrow">Pārvaldības panelis</span>
@@ -105,7 +73,7 @@ export default function AdminLoginPage() {
 
         {error ? <p className="admin-login-error">{error}</p> : null}
 
-        <button type="submit" className="btn btn-gold" disabled={loading}>
+        <button type="submit" className="btn btn-red" disabled={loading}>
           {loading ? "Notiek pieteikšanās…" : "Pieteikties"}
         </button>
 

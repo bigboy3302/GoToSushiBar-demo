@@ -5,22 +5,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#0E1B15",
-        "ink-2": "#0A140F",
-        surface: "#16281F",
-        "surface-2": "#1C3226",
-        brand: "#1F4D34",
-        "jade-soft": "#4B8760",
-        gold: "#D6AD66",
-        "gold-soft": "#F1C878",
-        paper: "#F4EFE2",
-        sage: "#9DB2A1",
-        "sage-dim": "#5F7568",
+        ink: "#0A0A0A",
+        "ink-2": "#050505",
+        surface: "#F7F6F4",
+        "surface-2": "#FFFFFF",
+        brand: "#E2202B",
+        "brand-dark": "#B5121B",
+        paper: "#F5F5F3",
+        stone: "#656260",
+        "stone-dim": "#9C9A95",
       },
       fontFamily: {
-        display: ["var(--font-fraunces)", "ui-serif", "Georgia", "serif"],
+        display: ["var(--font-archivo)", "ui-sans-serif", "system-ui", "sans-serif"],
         body: ["var(--font-work-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
-        mono: ["var(--font-space-mono)", "ui-monospace", "monospace"],
       },
       maxWidth: {
         site: "1180px",
