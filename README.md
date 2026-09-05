@@ -13,7 +13,7 @@ Production website for Go To Sushi Bar (Rīgas iela 9, Cēsis, LV-4101). Next.js
 
 ```bash
 npm install
-cp .env.example .env.local   # then fill in the real values (see below)
+# create .env.local with the variables listed under "One-time setup" below
 npm run dev
 ```
 

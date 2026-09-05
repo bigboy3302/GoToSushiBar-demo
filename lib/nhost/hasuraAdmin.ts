@@ -33,7 +33,7 @@ export function requireSetupEnv() {
   if (!subdomain || !region || !adminSecret) {
     console.error(
       "Missing NHOST_SUBDOMAIN, NHOST_REGION, or NHOST_ADMIN_SECRET.\n" +
-        "Put them in a local .env.local (gitignored) — see .env.example."
+        "Put them in a local .env.local (gitignored) — see README.md."
     );
     process.exit(1);
   }

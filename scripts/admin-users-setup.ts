@@ -23,7 +23,7 @@ const ALLOWED_EMAILS = (process.env.ADMIN_ALLOWED_EMAILS ?? "")
   .filter(Boolean);
 
 if (ALLOWED_EMAILS.length === 0) {
-  console.error("ADMIN_ALLOWED_EMAILS is empty — set it in .env.local first (see .env.example).");
+  console.error("ADMIN_ALLOWED_EMAILS is empty — set it in .env.local first (see README.md).");
   process.exit(1);
 }
 
