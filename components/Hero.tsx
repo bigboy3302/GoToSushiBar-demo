@@ -12,7 +12,17 @@ export default function Hero({ heroImageUrl }: { heroImageUrl?: string | null })
       {heroImageUrl ? (
         <div className="hero-photo" style={{ backgroundImage: `url(${heroImageUrl})` }} aria-hidden="true" />
       ) : (
-        <HeroCanvas />
+        <>
+          <HeroCanvas />
+          <div className="hero-photo-note" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <rect x="2" y="2" width="20" height="20" rx="2" fill="none" stroke="currentColor" strokeWidth="1.4" />
+              <circle cx="8" cy="8" r="2" fill="none" stroke="currentColor" strokeWidth="1.4" />
+              <path d="M3 17l5.5-5.5 3.5 3.5 4-5 5 5.5" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            {t("Restorāna foto — drīzumā", "Restaurant photo — coming soon")}
+          </div>
+        </>
       )}
       <svg className="hero-ghost" viewBox="0 0 1000 140" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
         <text

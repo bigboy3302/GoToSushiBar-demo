@@ -2,20 +2,23 @@
 
 import { useLang } from "@/lib/i18n/LangContext";
 import HighlightPoints from "./HighlightPoints";
+import PhotoPlaceholder from "./PhotoPlaceholder";
 
 export default function About({ photoUrl }: { photoUrl?: string | null }) {
   const { t } = useLang();
 
   return (
     <section className="about" id="about">
-      {photoUrl ? (
-        <div className="wrap">
-          <div className="about-photo">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={photoUrl} alt="" />
-          </div>
+      <div className="wrap">
+        <div className="about-photo">
+          {photoUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={photoUrl} alt={t("Go To Sushi Bar interjers", "Go To Sushi Bar interior") as string} />
+          ) : (
+            <PhotoPlaceholder label={t("Interjera foto — drīzumā", "Interior photo — coming soon") as string} />
+          )}
         </div>
-      ) : null}
+      </div>
       <div className="wrap about-grid">
         <div>
           <span className="eyebrow">{t("Par mums", "About")}</span>

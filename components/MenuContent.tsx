@@ -2,6 +2,7 @@
 
 import { useLang } from "@/lib/i18n/LangContext";
 import type { GroupedMenu, MenuCategory, MenuSubcategory } from "@/lib/nhost/getMenu";
+import PhotoPlaceholder from "./PhotoPlaceholder";
 
 const TABS: { key: MenuCategory; lv: string; en: string }[] = [
   { key: "sushi", lv: "Suši", en: "Sushi" },
@@ -73,6 +74,9 @@ export default function MenuContent({ menu }: { menu: GroupedMenu }) {
 
             {TABS.map((tab) => (
               <div className="menu-panel" id={`panel-${tab.key}`} key={tab.key}>
+                <div className="menu-panel-photo">
+                  <PhotoPlaceholder label={t(`${tab.lv} — foto drīzumā`, `${tab.en} — photo coming soon`) as string} />
+                </div>
                 <div className="menu-grid">
                   {menu[tab.key].map((sub) => (
                     <SubcategoryBlock sub={sub} key={sub.subcategory_lv} />

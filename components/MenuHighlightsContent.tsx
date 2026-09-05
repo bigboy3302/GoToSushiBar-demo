@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { useLang } from "@/lib/i18n/LangContext";
-import type { MenuItemRow } from "@/lib/nhost/getMenu";
+import type { MenuHighlightGroup } from "./MenuHighlights";
+import PhotoPlaceholder from "./PhotoPlaceholder";
 
-export default function MenuHighlightsContent({ items }: { items: MenuItemRow[] }) {
+export default function MenuHighlightsContent({ groups }: { groups: MenuHighlightGroup[] }) {
   const { t } = useLang();
 
   return (
@@ -24,15 +25,27 @@ export default function MenuHighlightsContent({ items }: { items: MenuItemRow[] 
           <hr className="rule" />
         </div>
 
-        <ul className="menu-list">
-          {items.map((item) => (
-            <li className="menu-item" key={item.id}>
-              <span className="name">{t(item.name_lv, item.name_en)}</span>
-              <span className="leader" aria-hidden="true" />
-              <span className="price">€{item.price.toFixed(2)}</span>
-            </li>
+        <div className="menu-highlight-grid">
+          {groups.map((group) => (
+            <div className="menu-highlight-card" key={group.key}>
+              <div className="menu-highlight-photo">
+                <PhotoPlaceholder label={t(`${group.lv} — foto drīzumā`, `${group.en} — photo coming soon`) as string} />
+              </div>
+              <div className="menu-highlight-body">
+                <h3>{t(group.lv, group.en)}</h3>
+                <ul className="menu-list">
+                  {group.items.map((item) => (
+                    <li className="menu-item" key={item.id}>
+                      <span className="name">{t(item.name_lv, item.name_en)}</span>
+                      <span className="leader" aria-hidden="true" />
+                      <span className="price">€{item.price.toFixed(2)}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
 
         <p style={{ marginTop: "clamp(28px, 4vw, 40px)" }}>
           <Link className="btn btn-gold" href="/menu">
