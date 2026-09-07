@@ -965,6 +965,12 @@ a.about-contact-item:hover {
 .menu-item-card-photo {
   aspect-ratio: 1 / 1;
 }
+.menu-item-card-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 .menu-item-card-body {
   padding: 10px 12px 14px;
   display: flex;

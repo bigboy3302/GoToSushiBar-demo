@@ -1,5 +1,5 @@
 import { getSiteMedia } from "@/lib/nhost/getSiteMedia";
-import ImageDropzone from "@/components/admin/ImageDropzone";
+import SiteMediaGrid from "@/components/admin/SiteMediaGrid";
 import PublishBar from "@/components/admin/PublishBar";
 
 const SLOTS: { key: string; label: string }[] = [
@@ -17,6 +17,7 @@ const SLOTS: { key: string; label: string }[] = [
 
 export default async function AdminDashboardPage() {
   const media = await getSiteMedia("draft");
+  const slots = SLOTS.map((slot) => ({ ...slot, imageUrl: media[slot.key]?.image_url ?? null }));
 
   return (
     <>
@@ -26,16 +27,7 @@ export default async function AdminDashboardPage() {
           Ievelciet attēlu katrā laukā vai klikšķiniet, lai izvēlētos failu. Skatiet, kā tas izskatīsies, sadaļā
           "Priekšskatījums", pirms publicējat.
         </p>
-        <div className="admin-media-grid">
-          {SLOTS.map((slot) => (
-            <ImageDropzone
-              key={slot.key}
-              slotKey={slot.key}
-              label={slot.label}
-              initialImageUrl={media[slot.key]?.image_url ?? null}
-            />
-          ))}
-        </div>
+        <SiteMediaGrid slots={slots} />
       </section>
 
       <PublishBar />

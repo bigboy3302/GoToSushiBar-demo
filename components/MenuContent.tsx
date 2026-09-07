@@ -47,7 +47,12 @@ function ItemCard({ item }: { item: MenuItemRow }) {
   return (
     <div className="menu-item-card">
       <div className="menu-item-card-photo">
-        <PhotoPlaceholder label={t(item.name_lv, item.name_en) as string} />
+        {item.image_url ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={item.image_url} alt={t(item.name_lv, item.name_en) as string} />
+        ) : (
+          <PhotoPlaceholder label={t(item.name_lv, item.name_en) as string} />
+        )}
       </div>
       <div className="menu-item-card-body">
         <span className="name">{t(item.name_lv, item.name_en)}</span>

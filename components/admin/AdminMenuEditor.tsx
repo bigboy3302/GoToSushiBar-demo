@@ -3,6 +3,7 @@
 import { useState, useTransition } from "react";
 import { createMenuItem, updateMenuItem, deleteMenuItem, type MenuItemInput } from "@/app/admin/actions";
 import type { MenuCategory, MenuItemRow } from "@/lib/nhost/getMenu";
+import ImageDropzone from "./ImageDropzone";
 
 const CATEGORIES: { key: MenuCategory; label: string }[] = [
   { key: "sushi", label: "Suši" },
@@ -53,12 +54,13 @@ export default function AdminMenuEditor({
       <table className="admin-table">
         <thead>
           <tr>
-            <th style={{ width: "26%" }}>Nosaukums (LV / EN)</th>
-            <th style={{ width: "18%" }}>Apakškategorija (LV / EN)</th>
-            <th style={{ width: "22%" }}>Apraksts (LV / EN)</th>
-            <th style={{ width: "10%" }}>Cena €</th>
-            <th style={{ width: "8%" }}>Kārtība</th>
-            <th style={{ width: "16%" }}></th>
+            <th style={{ width: "9%" }}>Foto</th>
+            <th style={{ width: "21%" }}>Nosaukums (LV / EN)</th>
+            <th style={{ width: "16%" }}>Apakškategorija (LV / EN)</th>
+            <th style={{ width: "18%" }}>Apraksts (LV / EN)</th>
+            <th style={{ width: "8%" }}>Cena €</th>
+            <th style={{ width: "7%" }}>Kārtība</th>
+            <th style={{ width: "21%" }}></th>
           </tr>
         </thead>
         <tbody>
@@ -114,6 +116,18 @@ function MenuItemRowEditor({ item }: { item: MenuItemRow }) {
 
   return (
     <tr>
+      <td>
+        <ImageDropzone
+          label={`Foto — ${item.name_lv}`}
+          initialImageUrl={item.image_url}
+          compact
+          onChange={async (imageUrl) => {
+            const result = await updateMenuItem(item.id, { image_url: imageUrl });
+            if (result.ok) set("image_url", imageUrl);
+            return result;
+          }}
+        />
+      </td>
       <td>
         <input value={form.name_lv} onChange={(e) => set("name_lv", e.target.value)} placeholder="Nosaukums (LV)" />
         <input

@@ -1,16 +1,17 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { upsertSiteMediaSlot } from "@/app/admin/actions";
 
 export default function ImageDropzone({
-  slotKey,
   label,
   initialImageUrl,
+  onChange,
+  compact = false,
 }: {
-  slotKey: string;
   label: string;
   initialImageUrl: string | null;
+  onChange: (imageUrl: string | null) => Promise<{ ok: boolean; error?: string }>;
+  compact?: boolean;
 }) {
   const [imageUrl, setImageUrl] = useState(initialImageUrl);
   const [dragOver, setDragOver] = useState(false);
@@ -30,9 +31,9 @@ export default function ImageDropzone({
         setError(json.error ?? "Augšupielāde neizdevās.");
         return;
       }
-      const result = await upsertSiteMediaSlot({ slotKey, imageUrl: json.url });
+      const result = await onChange(json.url);
       if (!result.ok) {
-        setError(result.error);
+        setError(result.error ?? "Neizdevās saglabāt.");
         return;
       }
       setImageUrl(json.url);
@@ -47,9 +48,9 @@ export default function ImageDropzone({
     setBusy(true);
     setError(null);
     try {
-      const result = await upsertSiteMediaSlot({ slotKey, imageUrl: null });
+      const result = await onChange(null);
       if (!result.ok) {
-        setError(result.error);
+        setError(result.error ?? "Neizdevās saglabāt.");
         return;
       }
       setImageUrl(null);
@@ -60,7 +61,7 @@ export default function ImageDropzone({
 
   return (
     <div
-      className={`admin-dropzone${dragOver ? " is-dragover" : ""}`}
+      className={`admin-dropzone${compact ? " admin-dropzone--compact" : ""}${dragOver ? " is-dragover" : ""}`}
       onDragOver={(e) => {
         e.preventDefault();
         setDragOver(true);
@@ -73,14 +74,22 @@ export default function ImageDropzone({
         if (file) uploadFile(file);
       }}
     >
-      <span className="admin-dropzone-label">{label}</span>
+      {!compact ? <span className="admin-dropzone-label">{label}</span> : null}
 
-      <div className="admin-dropzone-preview" onClick={() => inputRef.current?.click()} role="button" tabIndex={0}>
+      <div
+        className="admin-dropzone-preview"
+        onClick={() => inputRef.current?.click()}
+        role="button"
+        tabIndex={0}
+        aria-label={label}
+      >
         {imageUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={imageUrl} alt="" />
         ) : (
-          <span className="admin-dropzone-empty">{busy ? "Augšupielādē…" : "Ievelciet attēlu šeit vai klikšķiniet"}</span>
+          <span className="admin-dropzone-empty">
+            {busy ? "…" : compact ? "+ Foto" : "Ievelciet attēlu šeit vai klikšķiniet"}
+          </span>
         )}
       </div>
 
@@ -98,10 +107,10 @@ export default function ImageDropzone({
       {imageUrl ? (
         <div className="admin-dropzone-row">
           <button type="button" className="btn btn-outline" onClick={() => inputRef.current?.click()} disabled={busy}>
-            Aizstāt
+            {compact ? "Mainīt" : "Aizstāt"}
           </button>
           <button type="button" className="btn btn-outline" onClick={handleRemove} disabled={busy}>
-            Noņemt
+            {compact ? "×" : "Noņemt"}
           </button>
         </div>
       ) : null}

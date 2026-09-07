@@ -261,6 +261,29 @@
   display: none;
 }
 
+.admin-dropzone--compact {
+  width: 88px;
+  padding: 6px;
+  gap: 6px;
+  border-radius: 8px;
+}
+.admin-dropzone--compact .admin-dropzone-preview {
+  aspect-ratio: 1 / 1;
+  border-radius: 6px;
+}
+.admin-dropzone--compact .admin-dropzone-empty {
+  font-size: 0.6rem;
+  padding: 0 4px;
+}
+.admin-dropzone--compact .admin-dropzone-row {
+  gap: 4px;
+}
+.admin-dropzone--compact .admin-dropzone-row button {
+  font-size: 0.6rem;
+  padding: 4px 5px;
+  letter-spacing: 0;
+}
+
 .admin-publish-bar {
   position: sticky;
   bottom: 0;
